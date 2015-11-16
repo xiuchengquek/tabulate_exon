@@ -30,7 +30,11 @@ class Transcript:
 
     def filter(self, coverage_cutoff, depth_cutoff):
         coverage_exon = float(self.coverage_base) / float(self.length)
-        depth  = float(self.bases) / float(self.coverage_base)
+
+        try :
+            depth  = float(self.bases) / float(self.coverage_base)
+        except ZeroDivisionError, e:
+            depth = 0
         if (coverage_exon >= coverage_cutoff ) and (depth >= depth_cutoff):
             return True
         else:
