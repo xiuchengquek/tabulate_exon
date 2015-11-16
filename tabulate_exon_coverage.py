@@ -33,7 +33,7 @@ class Transcript:
 
         try :
             depth  = float(self.bases) / float(self.coverage_base)
-        except ZeroDivisionError, e:
+        except ZeroDivisionError:
             depth = 0
         if (coverage_exon >= coverage_cutoff ) and (depth >= depth_cutoff):
             return True
