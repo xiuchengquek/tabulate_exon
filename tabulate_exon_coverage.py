@@ -111,7 +111,7 @@ if __name__ == '__main__' :
             line = line.strip()
             fields = line.split('\t')
             transcript_id = transcript_re.search(fields[9]).group(1)
-            transcript_manager.add_coverage(transcript_id, covered_base=covered_bases , length=exon_length)
+            transcript_manager.add_coverage(transcript_id, bases=fields[-1])
 
 
     with open(output_file, 'w+') as f:
