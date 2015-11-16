@@ -99,7 +99,6 @@ if __name__ == '__main__' :
     parser.add_argument('--output', help = 'coverage file ')
 
     args = parser.parse_args()
-    count_file = args.count
     coverage_file = args.coverage
     output_file = args.output
     transcript_re = re.compile('transcript_id \"([\w]+)\.')
