@@ -96,6 +96,9 @@ if __name__ == '__main__' :
 
     parser = argparse.ArgumentParser(description='Coverage file')
     parser.add_argument('--coverage', help = 'coverage file ')
+    parser.add_argument('--cov_cutoff', help = 'coverage file ', type=float)
+    parser.add_argument('--depth', help = 'coverage file ', type=int)
+
     parser.add_argument('--output', help = 'coverage file ')
 
     args = parser.parse_args()
@@ -103,6 +106,9 @@ if __name__ == '__main__' :
     output_file = args.output
     transcript_re = re.compile('transcript_id \"([\w]+)\.')
     transcript_dict = {}
+
+    cov_cutoff = args.cov_cutoff
+    depth = args.depth
 
     transcript_manager = transcriptManager()
 
@@ -115,7 +121,7 @@ if __name__ == '__main__' :
 
 
     with open(output_file, 'w+') as f:
-        for x in transcript_manager.filter_transcript(0.8, 20):
+        for x in transcript_manager.filter_transcript(cov_cutoff, depth):
             f.write("%s\n" % x)
 
 
